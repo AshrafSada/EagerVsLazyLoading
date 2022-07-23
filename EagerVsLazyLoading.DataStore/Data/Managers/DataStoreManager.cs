@@ -60,22 +60,24 @@ namespace EagerVsLazyLoading.DataStore.Data.Managers
         /// Eager loading method using Include
         /// </summary>
         /// <param name="context"> </param>
-        public static void GetBooksByAuthorEager(AppDbContext context)
+        public static List<Author> GetBooksByAuthorEager(AppDbContext context)
         {
             // eager loading using Include another related entity
             var authors = context.Authors
                 .Include(b => b.Books)
                 .ToList();
-            for (int i = 0; i < authors.Count; i++)
-            {
-                Console.WriteLine($"Author {authors[i].Name} Books: ");
-                var books = authors[i].Books.ToList();
-                for (int b = 0; b < books.Count; b++)
-                {
-                    Console.WriteLine("Book Title: {0} Published: {1}",
-                    books[b].Title, books[b].PubYear);
-                }
-            }
+            //for (int i = 0; i < authors.Count; i++)
+            //{
+            //   // Console.WriteLine($"Author {authors[i].Name} Books: ");
+            //    var books = authors[i].Books.ToList();
+            //    for (int b = 0; b < books.Count; b++)
+            //    {
+            //        Console.WriteLine("Book Title: {0} Published: {1}",
+            //        books[b].Title, books[b].PubYear);
+            //    }
+            //}
+
+            return authors;
         }
 
         /// <summary>
@@ -83,19 +85,21 @@ namespace EagerVsLazyLoading.DataStore.Data.Managers
         /// Lazy loading proxies for Entity Framework Core.
         /// </summary>
         /// <param name="context"> </param>
-        public static void GetBookByAuthorLazy(AppDbContext context)
+        public static List<Author> GetBooksByAuthorLazy(AppDbContext context)
         {
             var authors = context.Authors.ToList();
-            for (int i = 0; i < authors.Count; i++)
-            {
-                Console.WriteLine($"Author {authors[i].Name} Books: ");
-                var books = authors[i].Books.ToList();
-                for (int b = 0; b < books.Count; b++)
-                {
-                    Console.WriteLine("Book Title: {0} Published: {1}",
-                    books[b].Title, books[b].PubYear);
-                }
-            }
+            //for (int i = 0; i < authors.Count; i++)
+            //{
+            //    Console.WriteLine($"Author {authors[i].Name} Books: ");
+            //    var books = authors[i].Books.ToList();
+            //    for (int b = 0; b < books.Count; b++)
+            //    {
+            //        Console.WriteLine("Book Title: {0} Published: {1}",
+            //        books[b].Title, books[b].PubYear);
+            //    }
+            //}
+
+            return authors;
         }
     }
 }

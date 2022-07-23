@@ -1,0 +1,38 @@
+﻿@using EagerVsLazyLoading.DataStore.Models
+@model List<Author>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+    <h1>Available Books</h1>
+    <hr />
+    <ul>
+    @{
+        if (Model != null)
+        {
+            var authors = Model;
+
+            for (var i = 0; i < authors.Count; i++)
+            {
+                var books = authors[i].Books.ToList();
+                <li>
+                    Author @authors[i].Name Books:
+                    <ul>
+                        @for (var b = 0; b < books.Count; b++)
+                        {
+                            <li>@books[b].Title @books[b].PubYear</li>
+                        }
+                    </ul>
+                </li>
+
+            }
+        }
+        else
+        {
+            <li>Loading ...</li>
+        }
+    }
+</ul>
+</div>
