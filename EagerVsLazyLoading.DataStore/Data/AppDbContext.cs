@@ -16,7 +16,7 @@ namespace EagerVsLazyLoading.DataStore.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            _ = optionsBuilder.UseLazyLoadingProxies();
+            //_ = optionsBuilder.UseLazyLoadingProxies();
             base.OnConfiguring(optionsBuilder);
         }
     }
