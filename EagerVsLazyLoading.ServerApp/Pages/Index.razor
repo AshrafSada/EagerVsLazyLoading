@@ -1,0 +1,23 @@
+﻿@page "/"
+
+
+<PageTitle>Index</PageTitle>
+
+<h1>Books and Authors</h1>
+
+<hr />
+
+<ul>
+    @if(Authors != null)
+    {
+        @for (var i = 0; i < Authors.Count; i++)
+    {
+            <li>@Authors[i].Name</li>
+        }
+
+    }
+    else
+    {
+        <h4>Loading ...</h4>
+    }
+</ul>
